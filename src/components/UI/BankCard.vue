@@ -14,7 +14,7 @@
       <span>{{ cardNum.slice(12, 16) }}</span>
     </div>
     <div class="credit-info">
-      <div>{{ bankBalance }}</div>
+      <div class="font-weight-bold headline">$ {{ bankBalance }}</div>
       <div class="circles">
         <div class="circle"></div>
         <div class="circle"></div>

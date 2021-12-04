@@ -30,6 +30,13 @@ button {
 .border {
   color: #fff;
   border-image-slice: 1;
-  border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
+  border-image-source: linear-gradient(
+    90deg,
+    rgba(237, 140, 215, 1) 0%,
+    rgba(197, 150, 209, 1) 33%,
+    rgba(70, 140, 196, 1) 57%,
+    rgba(139, 204, 249, 1) 80%,
+    rgba(69, 239, 252, 1) 100%
+  );
 }
 </style>

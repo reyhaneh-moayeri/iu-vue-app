@@ -3,7 +3,7 @@
     <v-container>
       <bank-card
         card-num="1234567891122334"
-        bank-balance="$ 7,610.00"
+        :bank-balance="bankBalance"
       ></bank-card>
       <div class="content">
         <h2>Transfer</h2>
@@ -17,7 +17,7 @@
           :mode="applyForButtonMode"
           >Apply For</base-button
         >
-        <component :is="selectedTab"></component>
+        <component :is="selectedTab" @check-balance="decrease"></component>
       </div>
     </v-container>
   </v-card>
@@ -38,11 +38,17 @@ export default Vue.extend({
   },
   data: () => ({
     selectedTab: "send-tab",
+    bankBalance: 7000,
   }),
-
   methods: {
     setSelectedTab(tab) {
       this.selectedTab = tab;
+    },
+    decrease(total) {
+      if (this.bankBalance > 0) {
+        this.bankBalance = this.bankBalance - total;
+        console.log(total);
+      }
     },
   },
   computed: {

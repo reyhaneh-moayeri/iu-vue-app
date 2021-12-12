@@ -1,5 +1,5 @@
 <template>
-  <base-card class="bank-card" absolute bottom="10rem">
+  <div class="bank-card rounded-xl" absolute bottom="10rem">
     <div class="header">
       <div class="header__left"></div>
       <div class="header__logo">
@@ -20,18 +20,15 @@
         <div class="circle"></div>
       </div>
     </div>
-  </base-card>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import BaseCard from "./BaseCard.vue";
 export default Vue.extend({
   data: () => ({}),
-  components: {
-    BaseCard,
-  },
-  props: ["cardNum", "bankBalance"],
+  props: ["cardNum"],
+  inject: ["bankBalance"],
 });
 </script>
 

@@ -1,6 +1,9 @@
 <template>
   <nav>
-    <v-toolbar flat color="#576574">
+    <v-toolbar flat color="#576574" class="nav-toolbar">
+      <input type="search" placeholder="search" class="px-5 mr-4" />
+      <base-icon icon="mdi-bell"></base-icon>
+      <base-icon icon="mdi-account"></base-icon>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
     </v-toolbar>
     <v-navigation-drawer v-model="drawer" dark color="#2c3e50" app>
@@ -67,8 +70,12 @@
 
 <script>
 import Vue from "vue";
+import BaseIcon from "./BaseIcon";
 export default Vue.extend({
   name: "App",
+  components: {
+    BaseIcon,
+  },
   data: () => ({
     items: {
       item1: [
@@ -94,8 +101,30 @@ export default Vue.extend({
 });
 </script>
 
-<style scoped>
-.v-subheader {
-  height: 90px;
+<style lang="scss">
+.v-list-item--active {
+  background: rgb(222, 85, 184);
+  background: linear-gradient(
+    0deg,
+    rgba(222, 85, 184, 1) 0%,
+    rgba(200, 176, 214, 1) 44%,
+    rgba(45, 253, 191, 1) 100%
+  );
+  position: relative;
+}
+.v-list-item--active::before {
+  background: #485460 !important;
+  opacity: 1 !important;
+  transform: translatex(3px);
+}
+.v-list-item__content {
+  z-index: 10 !important;
+}
+.v-banner__content,
+.v-banner__text {
+  overflow: visible !important;
+}
+.v-toolbar__content {
+  justify-content: flex-end;
 }
 </style>

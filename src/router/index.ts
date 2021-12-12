@@ -1,12 +1,12 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import Home from "../view/Home.vue";
+import Home from "@/view/Home.vue";
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: "/",
+    path: "/wallet",
     name: "Home",
     component: Home,
   },
@@ -19,3 +19,4 @@ const router = new VueRouter({
 });
 
 export default router;
+// base/#/blog/

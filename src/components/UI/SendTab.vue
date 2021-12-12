@@ -23,7 +23,7 @@
         <p>Total:&nbsp; &nbsp; &nbsp;{{ total }}</p>
       </div>
       <div class="form-control">
-        <v-btn @click="validate" class="rounded-xl py-5 btn">
+        <v-btn class="rounded-xl py-6 btn">
           <v-icon left>mdi-send</v-icon>
           send
         </v-btn>
@@ -37,26 +37,15 @@ import Vue from "vue";
 export default Vue.extend({
   components: {},
   data: () => ({
-    commision: 0,
     total: 0,
+    commision: 0,
     walletId: "",
-    amount: null,
     reason: "",
+    amount: null,
     walletIdValidity: "pending",
   }),
   props: ["id"],
   methods: {
-    validate() {
-      if (this.walletIdValidity === "valid" && this.amount) {
-        this.commision = Number(this.amount) * 0.01;
-        console.log(this.commision);
-        this.total = Number(this.amount) + this.commision;
-        this.$emit("check-balance", this.total);
-      }
-      this.walletId = "";
-      this.reason = "";
-      this.amount = null;
-    },
     validateInput() {
       if (this.walletId.trim() === "") {
         this.walletIdValidity = "invalid";
@@ -65,10 +54,12 @@ export default Vue.extend({
       }
     },
   },
+
+  computed: {},
 });
 </script>
 
-<style scoped>
+<style>
 .form-control {
   display: flex;
   flex-direction: column;
@@ -79,18 +70,6 @@ label {
   align-self: flex-start;
   font-size: 0.9rem;
 }
-input {
-  background: rgba(0, 0, 0, 0.12);
-  margin-top: 0.5rem;
-  padding: 0.5rem 0.5rem;
-  border-radius: 0.8rem;
-  color: #fff;
-  font-size: 0.9rem;
-}
-input:focus {
-  outline: none;
-}
-
 .form-control:first-child input {
   text-align: center;
 }

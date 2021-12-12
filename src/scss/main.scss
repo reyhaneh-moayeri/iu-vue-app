@@ -1,0 +1,28 @@
+.card {
+  height: 10rem;
+  color: #fff;
+}
+
+.card:first-child {
+  background: url("../assets/bg.jpg") no-repeat center;
+  background-position: center;
+  background-size: cover;
+}
+
+input {
+  background: rgba(0, 0, 0, 0.12);
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.5rem;
+  border-radius: 0.8rem;
+  color: #fff;
+  font-size: 0.9rem;
+}
+input:focus {
+  outline: none;
+}
+
+.br-icon {
+  border: 0.1rem solid rgb(87, 81, 81);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+}

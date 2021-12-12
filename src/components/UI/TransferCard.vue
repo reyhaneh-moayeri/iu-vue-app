@@ -1,10 +1,7 @@
 <template>
   <v-card class="rounded-xl mt-5" dark min-height="33rem" flat color="#2c3e50">
     <v-container>
-      <bank-card
-        card-num="1234567891122334"
-        :bank-balance="bankBalance"
-      ></bank-card>
+      <bank-card card-num="1234567891122334"></bank-card>
       <div class="content">
         <h2>Transfer</h2>
         <base-button
@@ -17,7 +14,7 @@
           :mode="applyForButtonMode"
           >Apply For</base-button
         >
-        <component :is="selectedTab" @check-balance="decrease"></component>
+        <component :is="selectedTab"></component>
       </div>
     </v-container>
   </v-card>
@@ -38,17 +35,11 @@ export default Vue.extend({
   },
   data: () => ({
     selectedTab: "send-tab",
-    bankBalance: 7000,
+    // bankBalance: 7000,
   }),
   methods: {
     setSelectedTab(tab) {
       this.selectedTab = tab;
-    },
-    decrease(total) {
-      if (this.bankBalance > 0) {
-        this.bankBalance = this.bankBalance - total;
-        console.log(total);
-      }
     },
   },
   computed: {

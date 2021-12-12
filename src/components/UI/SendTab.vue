@@ -23,7 +23,7 @@
         <p>Total:&nbsp; &nbsp; &nbsp;{{ total }}</p>
       </div>
       <div class="form-control">
-        <v-btn class="rounded-xl py-6 btn">
+        <v-btn class="rounded-xl py-6 btn" @click="validate">
           <v-icon left>mdi-send</v-icon>
           send
         </v-btn>
@@ -34,6 +34,7 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { mapGetters } from "vuex";
 export default Vue.extend({
   components: {},
   data: () => ({
@@ -45,7 +46,24 @@ export default Vue.extend({
     walletIdValidity: "pending",
   }),
   props: ["id"],
+  computed: {
+    ...mapGetters(["bankBalance"]),
+  },
   methods: {
+    validate() {
+      if (this.walletIdValidity === "valid" && this.amount) {
+        this.commision = Number(this.amount) * 0.01;
+        console.log(this.commision);
+        this.total = Number(this.amount) + this.commision;
+        if (this.bankBalance > 0) {
+          this.$store.state.bankBalance =
+            this.$store.state.bankBalance - this.total;
+        }
+      }
+      this.walletId = "";
+      this.reason = "";
+      this.amount = null;
+    },
     validateInput() {
       if (this.walletId.trim() === "") {
         this.walletIdValidity = "invalid";
@@ -54,8 +72,6 @@ export default Vue.extend({
       }
     },
   },
-
-  computed: {},
 });
 </script>
 

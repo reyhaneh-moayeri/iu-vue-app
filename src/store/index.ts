@@ -4,9 +4,15 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
+  state: {
+    bankBalance : 8000,
+  },
   mutations: {},
   actions: {},
-  getters: {},
+  getters: {
+    bankBalance(state){
+      return state.bankBalance
+    }
+  },
   modules: {},
 });

@@ -25,10 +25,13 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { mapGetters } from "vuex";
 export default Vue.extend({
   data: () => ({}),
   props: ["cardNum"],
-  inject: ["bankBalance"],
+  computed: {
+    ...mapGetters(["bankBalance"]),
+  },
 });
 </script>
 

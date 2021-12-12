@@ -66,6 +66,7 @@ import Vue from "vue";
 import TransferCard from "../components/UI/TransferCard.vue";
 import BaseCard from "../components/UI/BaseCard.vue";
 import BaseIcon from "../components/UI/BaseIcon.vue";
+import {mapGetters} from "vuex"
 export default Vue.extend({
   components: {
     TransferCard,
@@ -75,7 +76,7 @@ export default Vue.extend({
 
   data() {
     return {
-      bankBalance: 8000,
+      // bankBalance: 8000,
       desserts: [
         {
           icon: "mdi-city",
@@ -95,11 +96,9 @@ export default Vue.extend({
       ],
     };
   },
-  provide() {
-    return {
-      bankBalance: this.bankBalance,
-    };
 
-  },
+  computed:{
+    ...mapGetters(['bankBalance'])
+  }
 });
 </script>
